@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\RequestUserTokenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/**
+ * Get a token for a user using this route.
+ * This is just for demo purposes.
+ */
+Route::post('/user-token', RequestUserTokenController::class);
+
+Route::middleware('auth:sanctum')->apiResource('/email', EmailController::class)->only(['store', 'destroy']);

@@ -29,10 +29,15 @@ return [
     */
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+            'throw' => false,
+        ],
+
+        'attachments' => [
+            'driver' => 'local',
+            'root' => storage_path('attachments'),
             'throw' => false,
         ],
 
@@ -55,7 +60,6 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
-
     ],
 
     /*

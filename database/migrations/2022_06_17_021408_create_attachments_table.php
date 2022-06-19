@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Models\Email;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +13,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('type');
-            $table->json('payload');
+            $table->foreignIdFor(Email::class)->constrained()->cascadeOnDelete();
+            $table->string('original_filename');
+            $table->string('storage_filename');
+            $table->string('mime_type');
+            $table->unsignedInteger('size');
+            $table->string('disk');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('attachments');
     }
 };

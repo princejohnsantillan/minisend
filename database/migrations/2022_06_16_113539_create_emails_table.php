@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Message;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,14 +15,16 @@ return new class extends Migration {
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Message::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('subject')->index();
             $table->string('from_email')->index();
-            $table->string('from_name')->nullable();
+            $table->string('from_name')->nullable()->index();
             $table->string('to_email')->index();
-            $table->string('to_name')->nullable();
-            $table->longText('body')->nullable();
+            $table->string('to_name')->nullable()->index();
+            $table->longText('text')->nullable();
+            $table->longText('html')->nullable();
             $table->string('status')->index();
+            $table->text('failure_reason')->nullable();
             $table->timestamp('posted_at')->nullable();
             $table->timestamp('sent_at')->nullable();
             $table->timestamp('failed_at')->nullable();

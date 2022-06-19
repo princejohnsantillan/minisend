@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum TransactionStatus: string
+enum DeliveryStatus: string
 {
     case POSTED = 'Posted';
     case SENT = 'Sent';

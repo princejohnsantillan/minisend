@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Message;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +17,7 @@ class AttachmentFactory extends Factory
     public function definition()
     {
         return [
-            'message_id' => Message::factory(),
-            'filename' => $this->faker->file('./'),
+
         ];
     }
 }
