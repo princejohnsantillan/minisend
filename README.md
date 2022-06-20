@@ -70,6 +70,10 @@ https://developers.mailersend.com/api/v1/email.html#send-an-email
 
 ```
 
+The response will have a X-Email-ID header, this will contain the email message ID of your request.
+If you wish to delete the email you can make a DELETE request to **/api/email/{email_id}**.
+Note that you can only delete the message if it has not been sent yet.
+
 <br />
 
 ## Viewing the dashboard
