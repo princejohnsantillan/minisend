@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\DownloadAttachmentController;
 use App\Http\Controllers\Web\EmailController;
 use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\LogoutController;
@@ -25,4 +26,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', DashboardController::class);
 
     Route::resource('/email', EmailController::class)->only(['index', 'show']);
+
+    Route::get('/attachment/{attachment}/download', DownloadAttachmentController::class)->name('attachment.download');
 });

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class LoginController extends Controller
 {
@@ -31,10 +31,11 @@ class LoginController extends Controller
             'token' => ['required'],
         ]);
 
-        $user = User::firstWhere('email', $credentials['email']);
+        /** @var \App\Models\User|null $tokenUser */
+        $tokenUser = PersonalAccessToken::findToken($credentials['token'])?->tokenable;
 
-        if ($user?->tokens()->where('id', $credentials['token'])->exists()) {
-            Auth::login($user);
+        if ($tokenUser?->email === $credentials['email']) {
+            Auth::login($tokenUser);
 
             $request->session()->regenerate();
 

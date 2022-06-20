@@ -20,7 +20,7 @@ class DashboardController extends Controller
             'stats' => [
                 ['name' => 'Total Emails Sent', 'stat' => $user?->emails()->where('status', DeliveryStatus::SENT)->count() ?? 0],
                 ['name' => 'Total Emails Failed', 'stat' => $user?->emails()->where('status', DeliveryStatus::FAILED)->count() ?? 0],
-                ['name' => 'Total Email Attachments', 'stat' => $user?->emails()->withCount('attachments')->pluck('attachments_count')->sum() ?? 0],
+                ['name' => 'Total Files Attached', 'stat' => $user?->emails()->withCount('attachments')->pluck('attachments_count')->sum() ?? 0],
             ],
         ]);
     }

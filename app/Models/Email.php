@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use App\Enums\DeliveryStatus;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property string $posted_at_string
+ */
 class Email extends Model
 {
     use HasFactory;
@@ -16,6 +20,9 @@ class Email extends Model
 
     protected $casts = [
         'status' => DeliveryStatus::class,
+        'posted_at' => 'immutable_datetime',
+        'sent_at' => 'immutable_datetime',
+        'failed_at' => 'immutable_datetime',
     ];
 
     public function client(): BelongsTo
@@ -26,6 +33,13 @@ class Email extends Model
     public function attachments(): HasMany
     {
         return $this->hasMany(Attachment::class);
+    }
+
+    public function postedAtString(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->posted_at->toString()
+        );
     }
 
     public function sent(): bool

@@ -71,6 +71,10 @@
         "review": [
             "vendor/bin/php-cs-fixer fix",
             "vendor/bin/phpstan analyse"
+        ],
+        "ide": [
+            "@php artisan ide-helper:generate -H",
+            "@php artisan ide-helper:models -N -R"
         ]
     },
     "extra": {

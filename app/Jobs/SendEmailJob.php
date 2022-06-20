@@ -11,7 +11,6 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
 
 class SendEmailJob implements ShouldQueue
 {
@@ -47,7 +46,7 @@ class SendEmailJob implements ShouldQueue
             }
 
             foreach ($this->email->attachments as $attachment) {
-                if (Storage::disk($attachment->disk->value)->exists($attachment->storage_filename)) {
+                if ($attachment->disk->storage()->exists($attachment->storage_filename)) {
                     $email->attachFromStorageDisk(
                         $attachment->disk->value,
                         $attachment->storage_filename,

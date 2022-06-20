@@ -56,9 +56,9 @@ namespace App\Models{
  * @property string|null $html
  * @property \App\Enums\DeliveryStatus $status
  * @property string|null $failure_reason
- * @property string|null $posted_at
- * @property string|null $sent_at
- * @property string|null $failed_at
+ * @property \Carbon\CarbonImmutable|null $posted_at
+ * @property \Carbon\CarbonImmutable|null $sent_at
+ * @property \Carbon\CarbonImmutable|null $failed_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Attachment[] $attachments
@@ -100,6 +100,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Email[] $emails
+ * @property-read int|null $emails_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
