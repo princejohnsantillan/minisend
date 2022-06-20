@@ -47,7 +47,7 @@ To send an email, make a post request to **/api/email**
 
 You may also attachment multiple files, make sure the key name is **attachments**
 
-The file size limit is 10MB and the supported file types is similar to MailSend.
+The file size limit is 10MB and the supported file types is similar to MailerSend.
 https://developers.mailersend.com/api/v1/email.html#send-an-email
 
 <br />
