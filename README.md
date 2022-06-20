@@ -2,6 +2,22 @@
 
 A transactional email app where a client could send an email through a Laravel API and also would have the ability to see how many emails have been sent, and track more interesting data about them through a VueJS frontend.
   
+## Setting up the Environment
+
+For ease, use Docker with Laravel Sail.
+
+1. Clone down this repo.
+
+1. **sail up**
+
+1. **composer install**
+
+1. **npm install**
+
+1. Laravel horizon is needed to run the jobs. **sail artisan horizon**
+
+1. You may access the mail client on http://minisend.test:8025 or according to your configuration
+
 <br />
 
 ## Requesting a User Token
@@ -31,7 +47,6 @@ You may also attachment multiple files, make sure the key name is **attachments*
 
 The file size limit is 10MB and the supported file types is similar to MailSend.
 https://developers.mailersend.com/api/v1/email.html#send-an-email
-
 
 <br />
 
