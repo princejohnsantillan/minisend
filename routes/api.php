@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\EmailController;
-use App\Http\Controllers\RequestUserTokenController;
+use App\Http\Controllers\API\EmailController;
+use App\Http\Controllers\API\RequestUserTokenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
  */
 Route::post('/user-token', RequestUserTokenController::class);
 
-Route::middleware('auth:sanctum')->apiResource('/email', EmailController::class)->only(['store', 'destroy']);
+Route::apiResource('/email', EmailController::class)->only(['store', 'destroy'])
+    ->middleware('auth:sanctum');

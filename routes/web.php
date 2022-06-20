@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\EmailController;
+use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\EmailController;
+use App\Http\Controllers\Web\LoginController;
+use App\Http\Controllers\Web\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return inertia('Dashboard');
-});
+Route::resource('/login', LoginController::class)->only(['index', 'store']);
 
-Route::apiResource('/email', EmailController::class)->only(['index', 'show']);
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', LogoutController::class);
+
+    Route::get('/', DashboardController::class);
+
+    Route::resource('/email', EmailController::class)->only(['index', 'show']);
+});

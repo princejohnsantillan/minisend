@@ -92,13 +92,14 @@ class StoreEmailRequest extends FormRequest
     /**
      * @param \App\Models\Email $email
      * @param \Illuminate\Http\UploadedFile[] $files
+     * @return void
      */
-    private function attachFiles(Email $email, array $files)
+    private function attachFiles(Email $email, array $files): void
     {
         $disk = StorageDisk::ATTACHMENTS->value;
 
         foreach ($files as $file) {
-            $path = $file->store($email->user_id, $disk);
+            $path = $file->store((string) $email->user_id, $disk);
 
             if (! $path) {
                 continue;

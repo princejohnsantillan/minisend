@@ -9,12 +9,6 @@ class EmailObserver
 {
     public $afterCommit = true;
 
-    /**
-     * Handle the Email "created" event.
-     *
-     * @param  \App\Models\Email  $email
-     * @return void
-     */
     public function created(Email $email)
     {
         dispatch(new SendEmailJob($email));

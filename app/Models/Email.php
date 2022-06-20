@@ -12,7 +12,7 @@ class Email extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = false;
 
     protected $casts = [
         'status' => DeliveryStatus::class,

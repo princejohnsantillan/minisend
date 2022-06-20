@@ -1,27 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Enums\DeliveryStatus;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmailRequest;
 use App\Models\Email;
-use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreEmailRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreEmailRequest $request)
@@ -34,26 +24,18 @@ class EmailController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Email  $email
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Email $email)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Email  $email
      * @return \Illuminate\Http\Response
      */
     public function destroy(Email $email)
     {
         if ($email->user_id !== auth()->id()) {
-            abort(403, "Can't touch this.");
+            abort(403, 'Get out of here!');
+        }
+
+        if ($email->status == DeliveryStatus::SENT) {
+            abort(406, 'Too late, we sent this out already.');
         }
 
         $email->delete();
