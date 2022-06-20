@@ -32,16 +32,18 @@ class EmailController extends Controller
         $user = auth()->user();
 
         $emails = $user->emails()
-            ->when(isset($search), fn ($query) => $query->where('subject', 'like', "%$search%")
+            ->when(isset($search), fn ($query) => $query->where(fn ($q) => $q->where('subject', 'like', "%$search%")
                 ->orWhere('from_name', 'like', "%$search%")
                 ->orWhere('from_email', 'like', "%$search%")
                 ->orWhere('to_name', 'like', "%$search%")
                 ->orWhere('to_email', 'like', "%$search%")
-            )
-            ->paginate($parameters['per_page'] ?? 10);
+            ))
+            ->paginate($parameters['per_page'] ?? 10)
+            ->withQueryString();
 
         return inertia('Email/Index', [
             'emails' => EmailResource::collection($emails),
+            'parameters' => $parameters,
         ]);
     }
 

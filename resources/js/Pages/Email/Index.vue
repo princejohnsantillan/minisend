@@ -5,14 +5,12 @@
         <div class="w-full">
 
           <div class="mt-1 relative rounded-md shadow-sm">
-            <form action="">
-              <input type="text" name="search-field" id="search-field"
-                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                placeholder="Search by Sender, Recipient, or Subject" />
-              <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                <SearchIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
-              </div>
-            </form>
+            <input type="text" v-model="search" name="search-field" id="search-field"
+              class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
+              placeholder="Search by Sender, Recipient, or Subject" />
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+              <SearchIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +72,7 @@
           </div>
         </div>
       </div>
-      <Pagination></Pagination>
+      <Pagination :meta="emails.meta" :links="emails.links"></Pagination>
     </div>
   </Layout>
 </template>
@@ -83,9 +81,20 @@
 
 import Pagination from '../../Shared/Pagination.vue';
 import { SearchIcon } from '@heroicons/vue/solid'
+import { ref, watch } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import debounce from "lodash/debounce";
 
 const props = defineProps({
-  emails: Object
+  emails: Object,
+  parameters: Object,
 });
+
+const search = ref(props.parameters.search ?? "");
+
+watch(search, debounce(value => {
+  Inertia.get('/email', { search: value }, { preserveState: true, replace: true })
+}, 500))
+
 
 </script>
