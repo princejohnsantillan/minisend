@@ -1,2 +1,60 @@
 # Welcome to MiniSend
+
 A transactional email app where a client could send an email through a Laravel API and also would have the ability to see how many emails have been sent, and track more interesting data about them through a VueJS frontend.
+  
+<br />
+
+## Requesting a User Token
+
+To start, you'll need to create a user. You can do this by making a post request to **/api/user-token**, name and email are required.
+
+<br />
+
+**Request:**
+
+```json
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+}
+```
+
+The response of this request will be your API token. Use this token as your Authorization's Bearer token to access other API endpoints. The same API token will be used to access the front-end dashboard.
+
+<br />
+
+## Sending an email via API
+
+To send an email, make a post request to **/api/email**
+
+You may also add an attachment, make sure the key name is **attachments**
+
+The file size limit is 10MB and the supported file types is similar to MailSend.
+https://developers.mailersend.com/api/v1/email.html#send-an-email
+
+
+<br />
+
+**Request:**
+```json
+{
+  "from": {
+    "email": "hello@mailersend.com",
+    "name": "MailerSend"
+  },
+  "to": {
+      "email": "john@mailersend.com",
+      "name": "John Mailer"
+    },
+  "subject": "Hello from MailerSend!",
+  "text": "This is just a friendly hello from your friends at MailerSend.",
+  "html": "<b>This is just a friendly hello from your friends at MailerSend.</b>",
+}
+
+```
+
+<br />
+
+## Viewing the dashboard
+
+To access the dashboard just visit the app on your browser. Your credentials will be the email you provided and the API token you received.
