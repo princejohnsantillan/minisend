@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
  * Get a token for a user using this route.
  * This is just for demo purposes.
  */
-Route::post('/user-token', RequestUserTokenController::class);
+Route::post('/user-token', RequestUserTokenController::class)->name('user-token');
 
 Route::apiResource('/email', EmailController::class)->only(['store', 'destroy'])
     ->middleware('auth:sanctum');

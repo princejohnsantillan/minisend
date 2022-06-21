@@ -10,11 +10,11 @@ For ease, use Docker with Laravel Sail.
 
 1. **sail up**
 
-1. **composer install**
+1. **sail composer install**
 
 1. **sail artisan migrate**
 
-1. **npm install**
+1. **sail npm install**
 
 1. Laravel horizon is needed to run the jobs. **sail artisan horizon**
 

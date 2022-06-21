@@ -51,9 +51,9 @@
 
         <div class="my-4">
           <div v-if="activeTab == 'html'">
-            <iframe :srcdoc="emailData.html"></iframe>
+            <iframe :srcdoc="emailData.html" class="w-full"></iframe>
           </div>
-          <div v-if="activeTab == 'plain-text'" v-text="emailData.text" />
+          <div v-if="activeTab == 'plain-text'" v-text="emailData.text" class="w-full" />
         </div>
 
         <hr />
