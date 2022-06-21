@@ -17,12 +17,7 @@ class EmailController extends Controller
      */
     public function store(StoreEmailRequest $request)
     {
-        ray('hi');
-
-        // return response()->noContent();
         $email = $request->store();
-
-        ray($email);
 
         return response()->noContent(headers: [
             'X-Email-ID' => $email->id,
