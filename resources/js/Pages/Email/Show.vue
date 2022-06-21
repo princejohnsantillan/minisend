@@ -50,10 +50,10 @@
         </div>
 
         <div class="my-4">
-          <div v-if="activeTab == 'html'">
-            <iframe :srcdoc="emailData.html" class="w-full"></iframe>
-          </div>
-          <div v-if="activeTab == 'plain-text'" v-text="emailData.text" class="w-full" />
+          <template v-if="activeTab == 'html'">
+            <iframe :srcdoc="emailData.html" class="w-full h-screen" height="100%"></iframe>
+          </template>
+          <div v-if="activeTab == 'plain-text'" v-text="emailData.text" class="w-full h-full" />
         </div>
 
         <hr />

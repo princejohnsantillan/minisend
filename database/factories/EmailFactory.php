@@ -26,6 +26,7 @@ class EmailFactory extends Factory
             'to_email' => $this->faker->email(),
             'to_name' => $this->faker->name(),
             'text' => collect($this->faker->sentences(5))->join(' '),
+            'html' => $this->faker->randomHtml(),
             'status' => DeliveryStatus::POSTED->value,
             'posted_at' => $this->faker->date(),
         ];
