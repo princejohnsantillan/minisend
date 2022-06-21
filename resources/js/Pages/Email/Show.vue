@@ -51,7 +51,7 @@
 
         <div class="my-4">
           <template v-if="activeTab == 'html'">
-            <iframe :srcdoc="emailData.html" class="w-full h-screen" height="100%"></iframe>
+            <iframe :srcdoc="emailData.html" class="w-full min-h-[50vh] max-h-screen" height="100%"></iframe>
           </template>
           <div v-if="activeTab == 'plain-text'" v-text="emailData.text" class="w-full h-full" />
         </div>

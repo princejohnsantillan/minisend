@@ -677,7 +677,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [$setup.activeTab == 'html' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("iframe", {
         key: 0,
         srcdoc: $setup.emailData.html,
-        "class": "w-full h-screen",
+        "class": "w-full min-h-[50vh] max-h-screen",
         height: "100%"
       }, null, 8
       /* PROPS */
