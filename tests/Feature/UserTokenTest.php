@@ -19,7 +19,7 @@ class UserTokenTest extends TestCase
             'email' => 'john.doe@example.com',
         ];
 
-        $response = Http::post(route('user-token'), $input);
+        $response = Http::post(route('api.user-token'), $input);
 
         $this->assertDatabaseHas('users', $input);
 
@@ -37,7 +37,7 @@ class UserTokenTest extends TestCase
             'email' => 'jane.smith@example.com',
         ];
 
-        $response = Http::post(route('user-token'), $input);
+        $response = Http::post(route('api.user-token'), $input);
 
         $login = $this->post('/login', [
             'email' => $input['email'],
@@ -57,7 +57,7 @@ class UserTokenTest extends TestCase
             'email' => 'juan.luna@example.com',
         ];
 
-        Http::post(route('user-token'), $input);
+        Http::post(route('api.user-token'), $input);
 
         $login = $this->post('/login', [
             'email' => $input['email'],

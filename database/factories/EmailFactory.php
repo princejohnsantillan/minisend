@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\DeliveryStatus;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,15 @@ class EmailFactory extends Factory
     public function definition()
     {
         return [
-
+            'user_id' => User::factory(),
+            'subject' => $this->faker->sentence(),
+            'from_email' => $this->faker->email(),
+            'from_name' => $this->faker->name(),
+            'to_email' => $this->faker->email(),
+            'to_name' => $this->faker->name(),
+            'text' => collect($this->faker->sentences(5))->join(' '),
+            'status' => DeliveryStatus::POSTED->value,
+            'posted_at' => $this->faker->date(),
         ];
     }
 }

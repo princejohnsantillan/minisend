@@ -6,6 +6,7 @@ use App\Enums\DeliveryStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmailRequest;
 use App\Models\Email;
+use Request;
 
 class EmailController extends Controller
 {
@@ -16,7 +17,12 @@ class EmailController extends Controller
      */
     public function store(StoreEmailRequest $request)
     {
+        ray('hi');
+
+        // return response()->noContent();
         $email = $request->store();
+
+        ray($email);
 
         return response()->noContent(headers: [
             'X-Email-ID' => $email->id,
