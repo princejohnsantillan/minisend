@@ -59,7 +59,7 @@
         <hr />
       </div>
 
-      <div v-if="attachments" class="mt-4">
+      <div v-if="attachments.data.length > 0" class="mt-4">
         <h2 class=" text-md"><b>Attachments: </b> </h2>
 
         <a v-for="file in attachments.data" :key="file.id" :href="file.link"

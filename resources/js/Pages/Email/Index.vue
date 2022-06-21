@@ -1,9 +1,9 @@
 <template>
   <Layout header="Email List">
     <div class="px-4 sm:px-6 lg:px-8">
+
       <div class="sm:flex sm:items-center">
         <div class="w-full">
-
           <div class="mt-1 relative rounded-md shadow-sm">
             <input type="text" v-model="search" name="search-field" id="search-field"
               class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
@@ -14,6 +14,7 @@
           </div>
         </div>
       </div>
+
       <div class="mt-8 flex flex-col">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -24,15 +25,19 @@
                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                       Subject
                     </th>
+
                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Sender
                     </th>
+
                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Recipient
                     </th>
+
                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                       Status
                     </th>
+
                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                       <span class="sr-only">view</span>
                     </th>
@@ -43,6 +48,7 @@
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {{ email.subject }}
                     </td>
+
                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                       <div class="flex items-center">
                         <div class="ml-4">
@@ -51,6 +57,7 @@
                         </div>
                       </div>
                     </td>
+
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       <div class="text-gray-900">{{ email.to.name }}</div>
                       <div class="text-gray-500">{{ email.to.email }}</div>
@@ -61,8 +68,11 @@
                         email.status == 'Sent' ? 'bg-green-100 text-green-800' : '',
                         email.status == 'Posted' ? 'bg-yellow-100 text-yellow-800' : '',
                         email.status == 'Failed' ? 'bg-red-100 text-red-800' : '',
-                      ]">{{ email.status }}</span>
+                      ]">
+                        {{ email.status }}
+                      </span>
                     </td>
+
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                       <Link :href="'/email/' + email.id" class="text-indigo-600 hover:text-indigo-900">
                       View
@@ -73,10 +83,10 @@
                 </tbody>
               </table>
             </div>
-
           </div>
         </div>
       </div>
+
       <Pagination :meta="emails.meta" :links="emails.links"></Pagination>
     </div>
   </Layout>
@@ -100,6 +110,5 @@ const search = ref(props.parameters.search ?? "");
 watch(search, debounce(value => {
   Inertia.get('/email', { search: value }, { preserveState: true, replace: true })
 }, 500))
-
 
 </script>

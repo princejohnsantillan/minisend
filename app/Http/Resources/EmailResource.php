@@ -34,7 +34,7 @@ class EmailResource extends JsonResource
             'text' => $resource->text,
             'html' => $resource->html,
             'status' => $resource->status->value,
-            'posted_at' => $resource->posted_at_string,
+            'posted_at' => $resource->posted_at?->toString() ?? '',
         ];
     }
 }

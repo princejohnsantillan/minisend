@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Enums\DeliveryStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AttachmentResource;
 use App\Http\Resources\EmailResource;
-use App\Models\Attachment;
 use App\Models\Email;
 use Illuminate\Http\Request;
 

@@ -88,9 +88,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="px-4 py-8 sm:px-0">
             <slot />
-
           </div>
-
         </div>
       </main>
     </div>
@@ -109,7 +107,7 @@ const props = defineProps({
   header: String
 })
 
-const user = computed(() => usePage().props.value.auth.user);
+const user = computed(() => usePage().props.value.authUser);
 
 const navigation = [
   { name: 'Dashboard', href: '/' },
@@ -121,4 +119,5 @@ const isActiveNav = (href) => {
 }
 
 const logoutForm = useForm();
+
 </script>

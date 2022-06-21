@@ -3,26 +3,22 @@
     <div class="flex-1 flex justify-between sm:hidden">
       <Link :href="links.prev"
         class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-      Previous </Link>
+      Previous
+      </Link>
       <Link :href="links.next"
         class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-      Next </Link>
+      Next
+      </Link>
     </div>
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
       <div>
         <p class="text-sm text-gray-700">
           Showing
-
           <span class="font-medium">{{ meta.from }}</span>
-
           to
-
           <span class="font-medium">{{ meta.to }}</span>
-
           of
-
           <span class="font-medium">{{ meta.total }}</span>
-
           results
         </p>
       </div>
@@ -53,12 +49,12 @@
 </template>
 
 <script setup>
+
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid'
 
 const props = defineProps({
   meta: Object,
   links: Object
 });
-
 
 </script>
